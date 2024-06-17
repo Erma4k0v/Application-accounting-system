@@ -1,0 +1,47 @@
+﻿<Window x:Class="RepairRequests.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Client Window" Height="450" Width="800">
+    <Grid Background="#ECEFF1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Добавление заявки -->
+        <StackPanel Margin="10">
+            <Border BorderBrush="#CFD8DC" BorderThickness="2" CornerRadius="5" Padding="5">
+                <TextBlock Text="Клиент" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+            </Border>
+            <TextBlock Text="Добавить заявку" FontSize="18" FontWeight="Bold" Margin="0 10 0 10"/>
+            <TextBox x:Name="txtRequestNumber" Text="Номер заявки" Tag="Номер заявки" Margin="0 0 0 5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="txtEquipment" Text="Оборудование" Tag="Оборудование" Margin="0 0 0 5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="txtFaultType" Text="Тип неисправности" Tag="Тип неисправности" Margin="0 0 0 5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="txtProblemDescription" Text="Описание проблемы" Tag="Описание проблемы" Margin="0 0 0 5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <Button Content="Добавить заявку" Click="AddRequest_Click" Margin="0 10 0 0"/>
+        </StackPanel>
+
+        <!-- Обновление описания проблемы -->
+        <StackPanel Margin="10,230,10, 10">
+            <TextBlock Text="Изменить описание" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
+            <TextBox x:Name="txtRequestNumberToUpdate" Text="Номер заявки" Tag="Номер заявки" Margin="0 0 0 5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="txtNewProblemDescription" Text="Новое описание проблемы" Tag="Новое описание проблемы" Margin="0 0 0 5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <Button Content="Изменить описание проблемы" Click="ChangeProblemDescription_Click" Margin="0 10 0 0"/>
+        </StackPanel>
+
+        <!-- Отображение списка заявок -->
+        <ListView ItemsSource="{Binding Requests}" Margin="10" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Номер заявки" DisplayMemberBinding="{Binding RequestNumber}"/>
+                    <GridViewColumn Header="Статус заявки" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Дата добавления" DisplayMemberBinding="{Binding DateAdded}"/>
+                    <GridViewColumn Header="Оборудование" DisplayMemberBinding="{Binding Equipment}"/>
+                    <GridViewColumn Header="Тип неисправности" DisplayMemberBinding="{Binding FaultType}"/>
+                    <GridViewColumn Header="Описание проблемы" DisplayMemberBinding="{Binding ProblemDescription}"/>
+                    <GridViewColumn Header="Комментарии исполнителей" DisplayMemberBinding="{Binding Comments}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

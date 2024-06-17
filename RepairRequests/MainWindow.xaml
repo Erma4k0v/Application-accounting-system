@@ -1,0 +1,8 @@
+﻿<Window x:Class="RepairRequests.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Система учета заявок на ремонт" Height="450" Width="800">
+    <Grid>
+        <TextBlock Text="Добро пожаловать в систему учета заявок на ремонт!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+    </Grid>
+</Window>
